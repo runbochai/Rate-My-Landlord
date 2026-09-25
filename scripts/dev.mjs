@@ -1,0 +1,10 @@
+import './build.mjs';
+import {createServer} from 'node:http';
+import {mkdirSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import {createDatabase} from './database.mjs';
+const worker=(await import('../dist/server/index.js')).default;
+mkdirSync(new URL('../data/',import.meta.url),{recursive:true});
+const env={DB:createDatabase(fileURLToPath(new URL('../data/landlords.sqlite',import.meta.url))),ADMIN_TOKEN:process.env.ADMIN_TOKEN};
+const port=Number(process.env.PORT)||3000;
+createServer(async(req,res)=>{try{const origin=`http://localhost:${port}`;const request=new Request(new URL(req.url,origin),{method:req.method,headers:req.headers,...(['GET','HEAD'].includes(req.method)?{}:{body:req,duplex:'half'})});const response=await worker.fetch(request,env);res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));}catch(e){console.error(e);res.writeHead(500);res.end('Server error');}}).listen(port,'127.0.0.1',()=>console.log(`Local URL: http://localhost:${port}`));

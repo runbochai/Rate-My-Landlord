@@ -1,0 +1,14 @@
+{
+  "name": "rate-my-landlord",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "db:generate": "drizzle-kit generate",
+    "validate": "node scripts/validate-artifact.mjs"
+  },
+  "engines": { "node": ">=22.13.0" },
+  "devDependencies": { "drizzle-kit": "^0.31.4", "drizzle-orm": "^0.44.5" }
+}
