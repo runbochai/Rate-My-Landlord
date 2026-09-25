@@ -28,5 +28,6 @@ export const buildings = sqliteTable('buildings', {
 export const listings = sqliteTable('listings', {
   id: text('id').primaryKey(), buildingId: text('building_id').notNull().references(()=>buildings.id),
   unit: text('unit').notNull(), landlordId: text('landlord_id').notNull().references(()=>landlords.id),
+  rentalChannel: text('rental_channel', {enum:['direct','agent','unknown']}).notNull().default('unknown'),
   createdAt: integer('created_at').notNull(),
 }, t => [uniqueIndex('idx_listings_building_unit').on(t.buildingId,t.unit)]);
