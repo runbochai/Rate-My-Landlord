@@ -14,3 +14,5 @@
 
 /* Use the SVG building geometry for focus instead of its rectangular bounds. */
 .building-footprint:focus,.building-footprint:focus-visible{outline:none!important}.building-footprint:focus-visible{stroke-opacity:1;stroke-width:3;fill-opacity:.27}
+
+.location-toolbar{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}.location-toolbar .button{padding:8px 14px;min-height:40px;font-size:14px}.location-toolbar span{font-size:13px;color:#536a60}.my-location-person{display:grid;place-items:center;font-size:34px;line-height:1;filter:drop-shadow(0 2px 2px #173a3266);background:transparent;border:0}.my-location-person:after{content:"";position:absolute;bottom:0;width:12px;height:5px;border-radius:50%;background:#2776c6;z-index:-1}

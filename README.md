@@ -98,3 +98,5 @@ tests/        核心行为测试
 
 地图近景使用真实 OpenStreetMap 楼体轮廓：悬停时描边并显示最多两行楼名 / 地址，点按可进入 Unit。无名称且地址不完整的记录不显示。`node scripts/import-footprints.mjs` 更新轮廓，须在楼宇资料导入后运行。
 目录与每条评价展示楼宇地址、Unit 和房东评价对象；从目录提交时保留 Unit 关联。
+
+“我的位置”由用户主动点击后申请浏览器定位权限，用小人和精度范围显示设备位置；坐标只用于当前地图，不提交至本站数据库。50 Wellesley Street East 的 condo 分类和真实轮廓补充在 `public/building-overrides.json`，避免重新导入时丢失校正。
